@@ -11,17 +11,20 @@ namespace dotnetcore_command_saver.Controllers {
     public class CommandsController : ControllerBase
     {
 
-        private readonly CommandRepository _repository = new CommandRepository();
+        private readonly ICommandRepository _commandRepository;
+        public CommandsController(ICommandRepository commandRepository) {
+            _commandRepository = commandRepository;
+        }
 
         [HttpGet]
         public ActionResult<IEnumerable<Command>> GetAllCommands()
         {
-            return Ok(_repository.GetAppCommands());
+            return Ok(_commandRepository.GetAppCommands());
         }
         
         [HttpGet("{id}")]
         public ActionResult<Command> GetCommandById(int id) {
-            return Ok(_repository.GetCommandById(id));  
+            return Ok(_commandRepository.GetCommandById(id));  
         }
     }
 }
