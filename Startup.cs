@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using dotnetcore_command_saver.Repository;
+using dotnetcore_command_saver.Services.CommandService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,7 @@ namespace dotnetcore_command_saver {
             services.AddControllers();
             
             services.AddScoped<ICommandRepository, CommandRepository>();
+            services.AddScoped<ICommandService, CommandService>();
             
             services.AddSwaggerGen(c =>
             {
