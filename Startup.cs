@@ -12,8 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace dotnetcore_command_saver
-{
+namespace dotnetcore_command_saver {
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -23,7 +22,7 @@ namespace dotnetcore_command_saver
 
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+       
         public void ConfigureServices(IServiceCollection services)
         {
 
