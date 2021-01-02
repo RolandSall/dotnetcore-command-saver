@@ -8,7 +8,7 @@ using dotnetcore_command_saver.Repository;
 
 namespace dotnetcore_command_saver.Migrations
 {
-    [DbContext(typeof(CommanderContext))]
+    [DbContext(typeof(CommandContext))]
     [Migration("20210102152101_InitialMigrationWithSeeds")]
     partial class InitialMigrationWithSeeds
     {

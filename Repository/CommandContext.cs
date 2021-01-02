@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace dotnetcore_command_saver.Repository {
     
-    public class CommanderContext: DbContext {
+    public class CommandContext: DbContext {
         
-        public CommanderContext(DbContextOptions<CommanderContext> options) : base(options) {
+        public CommandContext(DbContextOptions<CommandContext> options) : base(options) {
             
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)

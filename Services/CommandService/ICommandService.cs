@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using dotnetcore_command_saver.Models;
 
 namespace dotnetcore_command_saver.Services.CommandService
 {
     public interface ICommandService
     {
-        IEnumerable<Command> GetAppCommands();
-        Command GetCommandById(int id);
+        IEnumerable<Command> GetAllCommands();
+        Command GetCommandById(Guid id);
     }
 }

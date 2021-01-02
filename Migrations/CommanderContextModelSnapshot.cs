@@ -7,7 +7,7 @@ using dotnetcore_command_saver.Repository;
 
 namespace dotnetcore_command_saver.Migrations
 {
-    [DbContext(typeof(CommanderContext))]
+    [DbContext(typeof(CommandContext))]
     partial class CommanderContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

@@ -29,7 +29,7 @@ namespace dotnetcore_command_saver {
             services.AddScoped<ICommandRepository, CommandRepository>();
             services.AddScoped<ICommandService, CommandService>();
 
-            services.AddDbContextPool<CommanderContext>(
+            services.AddDbContextPool<CommandContext>(
                     dbContextOptions => dbContextOptions
                         .UseMySql(
                             "server=localhost;user=root;password=root;database=commands",

@@ -12,7 +12,7 @@ namespace dotnetcore_command_saver {
             
             using (var scope = host.Services.CreateScope()) {
                 
-                using (var appContect = scope.ServiceProvider.GetRequiredService<CommanderContext>()) {
+                using (var appContect = scope.ServiceProvider.GetRequiredService<CommandContext>()) {
 
                     try {
                             appContect.Database.Migrate();

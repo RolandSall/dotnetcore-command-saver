@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using dotnetcore_command_saver.Models;
 using dotnetcore_command_saver.Repository;
@@ -20,12 +21,18 @@ namespace dotnetcore_command_saver.Controllers {
         [HttpGet]
         public ActionResult<IEnumerable<Command>> GetAllCommands()
         {
-            return Ok(_commandService.GetAppCommands());
+            return Ok(_commandService.GetAllCommands());
         }
         
         [HttpGet("{id}")]
-        public ActionResult<Command> GetCommandById(int id) {
-            return Ok(_commandService.GetCommandById(id));  
+        public ActionResult<Command> GetCommandById(Guid id) {
+            try {
+                return Ok(_commandService.GetCommandById(id));  
+            }
+            catch (Exception e) {
+                Console.WriteLine(e);
+                return NotFound(e.GetBaseException());
+            }
         }
     }
 }

@@ -1,20 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using dotnetcore_command_saver.Models;
 
 namespace dotnetcore_command_saver.Repository {
     
-    public class CommandRepository : ICommandRepository{
-        public IEnumerable<Command> GetAppCommands() {
-            var cmd = new Command(System.Guid.NewGuid(),"Desc", "Line", "Platform");
-            var commands = new List<Command> {cmd, cmd};
-            return commands;
+    public class CommandRepository : ICommandRepository
+    {
+
+        private readonly CommandContext _commandContext;
+
+        public CommandRepository(CommandContext commandContext)
+        {
+            _commandContext = commandContext;
         }
 
-        public Command GetCommandById(int id)
+        public IEnumerable<Command> GetAllCommands()
         {
-            var cmd = new Command(System.Guid.NewGuid(),"Desc", "Line", "Platform");
-            return cmd;
+            return _commandContext.Commands.ToList();
+        }
+
+        public Command GetCommandById(Guid id)
+        {
+            return _commandContext.Commands.FirstOrDefault(command => command.Id.Equals(id));
         }
     }
 }
