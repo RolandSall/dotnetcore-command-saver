@@ -28,7 +28,7 @@ namespace dotnetcore_command_saver.Controllers {
             return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(_commandService.GetAllCommands()));
         }
         
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name="GetCommandById")]
         public ActionResult<CommandReadDto> GetCommandById(Guid id) {
             try
             {
@@ -46,11 +46,14 @@ namespace dotnetcore_command_saver.Controllers {
         }
 
         [HttpPost]
-        public ActionResult<CommandReadDto> CreateCommand(CommandCreateDto commandCreateDto)
-        {
+        public ActionResult<CommandReadDto> CreateCommand(CommandCreateDto commandCreateDto) {
             var command = GetCommandFromRequest(commandCreateDto);
-            var commandResponse = _commandService.CreateCommand(command);
-            return Ok(_mapper.Map<CommandReadDto>(commandResponse));
+            var commandReadDto = GetCommandReadDtoFromDbResponse(command);
+            return CreatedAtRoute(nameof(GetCommandById), new {commandReadDto.Id}, commandReadDto);
+        }
+
+        private CommandReadDto GetCommandReadDtoFromDbResponse(Command command) {
+            return _mapper.Map<CommandReadDto>(_commandService.CreateCommand(command));
         }
 
         private Command GetCommandFromRequest(CommandCreateDto commandCreateDto) {
