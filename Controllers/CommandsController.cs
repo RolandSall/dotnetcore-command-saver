@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using AutoMapper;
+using dotnetcore_command_saver.DTOs;
 using dotnetcore_command_saver.Models;
 using dotnetcore_command_saver.Repository;
 using dotnetcore_command_saver.Services.CommandService;
@@ -14,23 +16,32 @@ namespace dotnetcore_command_saver.Controllers {
     {
 
         private readonly ICommandService _commandService;
-        public CommandsController(ICommandService commandService) {
+        private readonly IMapper _mapper;
+
+        public CommandsController(ICommandService commandService, IMapper mapper) {
             _commandService = commandService;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Command>> GetAllCommands() {
-            return Ok(_commandService.GetAllCommands());
+        public ActionResult<IEnumerable<CommandReadDto>> GetAllCommands() {
+            return Ok(_mapper.Map<IEnumerable<CommandReadDto>>(_commandService.GetAllCommands()));
         }
         
         [HttpGet("{id}")]
-        public ActionResult<Command> GetCommandById(Guid id) {
-            try {
-                return Ok(_commandService.GetCommandById(id));  
+        public ActionResult<CommandReadDto> GetCommandById(Guid id) {
+            try
+            {
+                var commandResponse = _commandService.GetCommandById(id);
+                if (commandResponse != null) {
+                    return Ok(_mapper.Map<CommandReadDto>(commandResponse));
+                }
+
+                return NotFound("Command Not Found!");
             }
             catch (Exception e) {
                 Console.WriteLine(e);
-                return NotFound(e.GetBaseException());
+                return Problem(e.GetBaseException().ToString());
             }
         }
     }
