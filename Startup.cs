@@ -1,18 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using dotnetcore_command_saver.Repository;
 using dotnetcore_command_saver.Services.CommandService;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 
 namespace dotnetcore_command_saver {
     public class Startup
@@ -32,7 +28,17 @@ namespace dotnetcore_command_saver {
             
             services.AddScoped<ICommandRepository, CommandRepository>();
             services.AddScoped<ICommandService, CommandService>();
-            
+
+            services.AddDbContextPool<CommanderContext>(
+                    dbContextOptions => dbContextOptions
+                        .UseMySql(
+                            "server=localhost;user=root;password=root;database=commands",
+                            new MySqlServerVersion(new Version(8, 0, 21)), 
+                            mySqlOptions => mySqlOptions
+                                .CharSetBehavior(CharSetBehavior.NeverAppend))
+                        .EnableSensitiveDataLogging()
+                        .EnableDetailedErrors());
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotnetcore_command_saver", Version = "v1" });
