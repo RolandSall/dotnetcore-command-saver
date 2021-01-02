@@ -19,8 +19,7 @@ namespace dotnetcore_command_saver.Controllers {
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Command>> GetAllCommands()
-        {
+        public ActionResult<IEnumerable<Command>> GetAllCommands() {
             return Ok(_commandService.GetAllCommands());
         }
         

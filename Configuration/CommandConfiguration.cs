@@ -12,7 +12,8 @@ namespace dotnetcore_command_saver.Configuration {
                 new Command(System.Guid.NewGuid(), "Remove Last Migration", "dotnet ef migrations remove", "EF Core 5.0"),
                 new Command(System.Guid.NewGuid(), "Update Migration", "dotnet ef database update", "EF Core 5.0"),
                 new Command(System.Guid.NewGuid(), "How To Add Entity MySQl with .net core 5 package", "dotnet add package Pomelo.EntityFrameworkCore.MySql --version 5.0.0-alpha.2", "EF Core 5.0"),
-                new Command(System.Guid.NewGuid(), "How To Add Automatic Migration Packages", "dotnet add package Microsoft.AspNetCore.Hosting.Abstractions --version 2.2.0", "EF Core 5.0")
+                new Command(System.Guid.NewGuid(), "How To Add Automatic Migration Packages", "dotnet add package Microsoft.AspNetCore.Hosting.Abstractions --version 2.2.0", "EF Core 5.0"),
+                new Command(System.Guid.NewGuid(), "How To Add Auto-Mappers", "dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 8.1.0", ".Net Core 5.0")
             );
         }
     }

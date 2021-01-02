@@ -43,38 +43,45 @@ namespace dotnetcore_command_saver.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("a298cae7-3734-4448-9153-799399e7f0d9"),
+                            Id = new Guid("2ed90ae5-dd1a-461d-ad13-5c1db2382719"),
                             Line = "dotnet ef migrations add <MigrationName>",
                             Objective = "Create Migration",
                             Platform = "EF Core 5.0"
                         },
                         new
                         {
-                            Id = new Guid("e5c99419-879f-4ec4-8599-d4246a8ae8f4"),
+                            Id = new Guid("d947f503-0ea0-4fa6-9837-596bf1442faa"),
                             Line = "dotnet ef migrations remove",
                             Objective = "Remove Last Migration",
                             Platform = "EF Core 5.0"
                         },
                         new
                         {
-                            Id = new Guid("bfd082c9-d9ea-4167-bcc7-1380c2d90cb7"),
+                            Id = new Guid("1f929bb1-c090-4179-860f-e29076b875af"),
                             Line = "dotnet ef database update",
                             Objective = "Update Migration",
                             Platform = "EF Core 5.0"
                         },
                         new
                         {
-                            Id = new Guid("4c3f5ae9-4976-4847-b025-0c2d24ad098f"),
+                            Id = new Guid("4302bfad-3654-415e-8fa8-1b9693b3a184"),
                             Line = "dotnet add package Pomelo.EntityFrameworkCore.MySql --version 5.0.0-alpha.2",
                             Objective = "How To Add Entity MySQl with .net core 5 package",
                             Platform = "EF Core 5.0"
                         },
                         new
                         {
-                            Id = new Guid("99f9bade-ce27-464e-91a4-5893cb77ee73"),
+                            Id = new Guid("f3db2cc7-1b9b-4b9d-b6ec-5437cd700973"),
                             Line = "dotnet add package Microsoft.AspNetCore.Hosting.Abstractions --version 2.2.0",
                             Objective = "How To Add Automatic Migration Packages",
                             Platform = "EF Core 5.0"
+                        },
+                        new
+                        {
+                            Id = new Guid("0d5b1696-9d9d-43bc-a0b0-d38d93364074"),
+                            Line = "dotnet add package AutoMapper.Extensions.Microsoft.DependencyInjection --version 8.1.0",
+                            Objective = "How To Add Auto-Mappers",
+                            Platform = ".Net Core 5.0"
                         });
                 });
 #pragma warning restore 612, 618
