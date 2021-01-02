@@ -1,6 +1,6 @@
 using System;
 
-namespace dotnetcore_command_saver.DTOs {
+namespace dotnetcore_command_saver.DTOs.CommandDTOs {
     public class CommandReadDto {
         
         public Guid Id { get; set; }

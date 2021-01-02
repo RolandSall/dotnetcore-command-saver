@@ -8,8 +8,7 @@ namespace dotnetcore_command_saver.Repository {
     public interface ICommandRepository
     {
 
-        bool SaveChanges();
-
+        void UpdateCommand(Command command);
         IEnumerable<Command> GetAllCommands();
         Command GetCommandById(Guid id);
         Command CreateCommand(Command command);

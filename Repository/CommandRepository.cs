@@ -16,12 +16,12 @@ namespace dotnetcore_command_saver.Repository {
             _commandContext = commandContext;
         }
 
-        public bool SaveChanges() {
-            return _commandContext.SaveChanges() >=0;
+        public void UpdateCommand(Command command)
+        {
+            _commandContext.SaveChanges();
         }
 
-        public IEnumerable<Command> GetAllCommands()
-        {
+        public IEnumerable<Command> GetAllCommands() {
             return _commandContext.Commands.ToList();
         }
 

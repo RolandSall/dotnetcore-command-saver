@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace dotnetcore_command_saver.DTOs {
+namespace dotnetcore_command_saver.DTOs.CommandDTOs {
     
     public class CommandCreateDto {
 
@@ -15,7 +15,6 @@ namespace dotnetcore_command_saver.DTOs {
         public string Platform { get; set; }
         
         public CommandCreateDto(string objective, string line, string platform) {
-         
             Objective = objective;
             Line = line;
             Platform = platform;

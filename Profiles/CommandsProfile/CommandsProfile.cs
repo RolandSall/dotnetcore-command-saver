@@ -1,5 +1,6 @@
 using AutoMapper;
 using dotnetcore_command_saver.DTOs;
+using dotnetcore_command_saver.DTOs.CommandDTOs;
 using dotnetcore_command_saver.Models;
 
 namespace dotnetcore_command_saver.Profiles.CommandsProfile {
@@ -9,6 +10,7 @@ namespace dotnetcore_command_saver.Profiles.CommandsProfile {
         public CommandsProfile() {
             CreateMap<Command, CommandReadDto>();
             CreateMap<CommandCreateDto, Command>();
+            CreateMap<CommandUpdateDto, Command>();
         }
     }
 }

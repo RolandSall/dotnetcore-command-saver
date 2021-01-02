@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using AutoMapper;
-using dotnetcore_command_saver.DTOs;
+using dotnetcore_command_saver.DTOs.CommandDTOs;
 using dotnetcore_command_saver.Models;
-using dotnetcore_command_saver.Repository;
 using dotnetcore_command_saver.Services.CommandService;
 using Microsoft.AspNetCore.Mvc;
 
@@ -52,7 +50,21 @@ namespace dotnetcore_command_saver.Controllers {
             return CreatedAtRoute(nameof(GetCommandById), new {commandReadDto.Id}, commandReadDto);
         }
 
-        private CommandReadDto GetCommandReadDtoFromDbResponse(Command command) {
+        [HttpPut("{id}")]
+        public ActionResult UpdateCommand(Guid id, CommandUpdateDto commandUpdateDto)
+        {
+            var commandToBeUpdated = _commandService.GetCommandById(id);
+            if (commandToBeUpdated == null)
+            {
+                return NotFound("Command Not Found!");
+            }
+
+            _mapper.Map(commandUpdateDto, commandToBeUpdated);
+            _commandService.UpdateCommand(commandToBeUpdated);
+            return NoContent();
+        }
+
+            private CommandReadDto GetCommandReadDtoFromDbResponse(Command command) {
             return _mapper.Map<CommandReadDto>(_commandService.CreateCommand(command));
         }
 

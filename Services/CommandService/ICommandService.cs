@@ -10,5 +10,6 @@ namespace dotnetcore_command_saver.Services.CommandService
         IEnumerable<Command> GetAllCommands();
         Command GetCommandById(Guid id);
         Command CreateCommand(Command command);
+        void UpdateCommand(Command command);
     }
 }
