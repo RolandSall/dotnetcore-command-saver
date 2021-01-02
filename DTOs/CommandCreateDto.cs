@@ -1,9 +1,6 @@
-using System;
-
 namespace dotnetcore_command_saver.DTOs {
-    public class CommandReadDto {
-        
-        public Guid Id { get; set; }
+    
+    public class CommandCreateDto {
 
         public string Objective { get; set; }
        
@@ -11,11 +8,12 @@ namespace dotnetcore_command_saver.DTOs {
 
         public string Platform { get; set; }
         
-        public CommandReadDto(Guid id, string objective, string line, string platform) {
-            Id = id;
+        public CommandCreateDto(string objective, string line, string platform) {
+         
             Objective = objective;
             Line = line;
             Platform = platform;
         }
+        
     }
 }

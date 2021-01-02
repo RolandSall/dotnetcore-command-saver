@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using dotnetcore_command_saver.Models;
 using dotnetcore_command_saver.Repository;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace dotnetcore_command_saver.Services.CommandService {
     
@@ -17,6 +18,14 @@ namespace dotnetcore_command_saver.Services.CommandService {
 
         public Command GetCommandById(Guid id) {
             return _commandRepository.GetCommandById(id);
+        }
+
+        public Command CreateCommand(Command command) {
+            if (command == null) {
+                throw new ArgumentException(nameof(command));
+            }
+            command.Id = Guid.NewGuid();
+            return _commandRepository.CreateCommand(command);
         }
     }
 }

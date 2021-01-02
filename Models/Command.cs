@@ -23,5 +23,8 @@ namespace dotnetcore_command_saver.Models{
             Line = line;
             Platform = platform;
         }
+
+        public Command() {
+        }
     }
 }

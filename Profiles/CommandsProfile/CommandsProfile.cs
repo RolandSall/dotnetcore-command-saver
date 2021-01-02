@@ -8,6 +8,7 @@ namespace dotnetcore_command_saver.Profiles.CommandsProfile {
         
         public CommandsProfile() {
             CreateMap<Command, CommandReadDto>();
+            CreateMap<CommandCreateDto, Command>();
         }
     }
 }

@@ -44,6 +44,18 @@ namespace dotnetcore_command_saver.Controllers {
                 return Problem(e.GetBaseException().ToString());
             }
         }
+
+        [HttpPost]
+        public ActionResult<CommandReadDto> CreateCommand(CommandCreateDto commandCreateDto)
+        {
+            var command = GetCommandFromRequest(commandCreateDto);
+            var commandResponse = _commandService.CreateCommand(command);
+            return Ok(_mapper.Map<CommandReadDto>(commandResponse));
+        }
+
+        private Command GetCommandFromRequest(CommandCreateDto commandCreateDto) {
+            return _mapper.Map<Command>(commandCreateDto);
+        }
     }
 }
 
