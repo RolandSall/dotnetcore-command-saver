@@ -1,10 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace dotnetcore_command_saver.Models{
     public class Command {
         
         [Key]
-        public int Id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MaxLength(150)]
@@ -16,7 +17,7 @@ namespace dotnetcore_command_saver.Models{
         [Required]
         public string Platform { get; set; }
         
-        public Command(int id, string objective, string line, string platform)
+        public Command(Guid id, string objective, string line, string platform)
         {
             Id = id;
             Objective = objective;
