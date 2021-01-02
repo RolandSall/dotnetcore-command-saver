@@ -1,4 +1,5 @@
 using System;
+using AutoMapper;
 using dotnetcore_command_saver.Repository;
 using dotnetcore_command_saver.Services.CommandService;
 using Microsoft.AspNetCore.Builder;
@@ -29,6 +30,8 @@ namespace dotnetcore_command_saver {
             services.AddScoped<ICommandRepository, CommandRepository>();
             services.AddScoped<ICommandService, CommandService>();
 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
             services.AddDbContextPool<CommandContext>(
                     dbContextOptions => dbContextOptions
                         .UseMySql(
@@ -43,6 +46,7 @@ namespace dotnetcore_command_saver {
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "dotnetcore_command_saver", Version = "v1" });
             });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

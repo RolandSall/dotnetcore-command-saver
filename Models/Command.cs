@@ -17,8 +17,7 @@ namespace dotnetcore_command_saver.Models{
         [Required]
         public string Platform { get; set; }
         
-        public Command(Guid id, string objective, string line, string platform)
-        {
+        public Command(Guid id, string objective, string line, string platform) {
             Id = id;
             Objective = objective;
             Line = line;
