@@ -34,5 +34,13 @@ namespace dotnetcore_command_saver.Services.CommandService {
             _commandRepository.UpdateCommand(command);
       
         }
+
+        public void DeletedCommandById(Command command) {
+            if (command == null) {
+                throw new ArgumentException(nameof(command));
+            }
+
+            _commandRepository.DeletedCommandById(command);
+        }
     }
 }

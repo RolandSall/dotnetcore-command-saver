@@ -34,5 +34,10 @@ namespace dotnetcore_command_saver.Repository {
             _commandContext.SaveChanges();
             return commandResponse;
         }
+
+        public void DeletedCommandById(Command command) {
+            _commandContext.Remove(command);
+            _commandContext.SaveChanges();
+        }
     }
 }

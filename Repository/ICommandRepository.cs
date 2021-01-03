@@ -12,5 +12,6 @@ namespace dotnetcore_command_saver.Repository {
         IEnumerable<Command> GetAllCommands();
         Command GetCommandById(Guid id);
         Command CreateCommand(Command command);
+        void DeletedCommandById(Command command);
     }
 }
