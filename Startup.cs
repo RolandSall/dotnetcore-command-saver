@@ -39,7 +39,8 @@ namespace dotnetcore_command_saver {
             services.AddDbContextPool<CommandContext>(
                     dbContextOptions => dbContextOptions
                         .UseMySql(
-                            "server=localhost;user=root;password=root;database=commands",
+                            "server=mysqldb;user=root;password=root;database=commands",
+                            // "server=localhost;user=root;password=root;database=commands",
                             new MySqlServerVersion(new Version(8, 0, 21)), 
                             mySqlOptions => mySqlOptions
                                 .CharSetBehavior(CharSetBehavior.NeverAppend))
@@ -63,11 +64,30 @@ namespace dotnetcore_command_saver {
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "dotnetcore_command_saver v1"));
             }
 
-            app.UseHttpsRedirection();
+            
+            
+            /*
+             To Enable Swagger In docker container (on http)
+             
+             Step1: uncomment below
+             app.UseSwagger();
+             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "dotnetcore_command_saver v1"));
+             
+             Step2:
+             Search for app.UseHttpsRedirection();  and comment this line
+            */
+
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "dotnetcore_command_saver v1"));
+            
+            /*app.UseHttpsRedirection();*/
 
             app.UseRouting();
 
             app.UseAuthorization();
+
+          
 
             app.UseEndpoints(endpoints =>
             {
